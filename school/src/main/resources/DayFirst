@@ -1,0 +1,34 @@
+package main.extatasksfirst;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class DayFirst {
+
+    public static void main(String[] args) {
+        // Create Scanner object for getting user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Create Random object to generate random results
+        Random random = new Random();
+
+        // Prompt the user for a yes/no question
+        System.out.println("Ask a yes/no question:");
+        String question = scanner.nextLine();
+
+        // Generate a random boolean (true for Yes, false for No)
+        boolean decision = random.nextBoolean();
+
+        // Print the result and a fun statement
+        if (decision) {
+            System.out.println("Answer: Yes");
+            System.out.println("Fun fact: Trust your instincts, they rarely fail!");
+        } else {
+            System.out.println("Answer: No");
+            System.out.println("Fun fact: Sometimes, it's better to wait for the right moment.");
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
