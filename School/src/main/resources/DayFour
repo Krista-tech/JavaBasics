@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class ShoppingListChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Define a shopping list with 5 items
+        String[] shoppingList = {"milk", "bread", "eggs", "cheese", "apples"};
+        
+        System.out.println("Welcome to the Shopping List Checker!");
+        System.out.println("Shopping List: milk, bread, eggs, cheese, apples");
+
+        // Loop to check each item the user enters
+        String userItem;
+        boolean itemFound;
+
+        for (int i = 0; i < shoppingList.length; i++) {
+            System.out.print("Enter an item to check: ");
+            userItem = scanner.nextLine();
+            itemFound = false;
+
+            // Check if the item is on the list
+            for (String item : shoppingList) {
+                if (item.equalsIgnoreCase(userItem)) {
+                    itemFound = true;
+                    System.out.println("Item found on the shopping list!");
+                    break;
+                }
+            }
+
+            if (!itemFound) {
+                System.out.println("Item not on the list. Remember to add " + userItem + "!");
+            }
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
