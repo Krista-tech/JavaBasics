@@ -1,0 +1,107 @@
+import java.util.Scanner;
+
+public class OnlineStore {
+
+    public static void main(String[] args) {
+
+        // Create a scanner object to get user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Introduction
+        System.out.println("Welcome to the Online Store!");
+        System.out.println("Here you can add items to your shopping cart and calculate the total cost.");
+
+        // Variables to keep track of the shopping cart
+        double totalCost = 0;
+        boolean shopping = true;
+
+        // Start the shopping loop
+        while (shopping) {
+            // Display the available items
+            System.out.println("\nAvailable Items:");
+            System.out.println("1. T-shirt - $15");
+            System.out.println("2. Jeans - $30");
+            System.out.println("3. Hat - $10");
+            System.out.println("4. Shoes - $50");
+            System.out.println("5. Exit and checkout");
+
+            // Ask the user to choose an item
+            System.out.print("\nEnter the number of the item you'd like to add to your cart: ");
+            int choice = scanner.nextInt();
+
+            // Switch to handle the choice
+            switch (choice) {
+                case 1:
+                    System.out.println("You added a T-shirt ($15) to your cart.");
+                    totalCost += 15;
+                    break;
+                case 2:
+                    System.out.println("You added Jeans ($30) to your cart.");
+                    totalCost += 30;
+                    break;
+                case 3:
+                    System.out.println("You added a Hat ($10) to your cart.");
+                    totalCost += 10;
+                    break;
+                case 4:
+                    System.out.println("You added Shoes ($50) to your cart.");
+                    totalCost += 50;
+                    break;
+                case 5:
+                    shopping = false;  // Exit the shopping loop
+                    System.out.println("You're checking out now.");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please choose again.");
+                    break;
+            }
+
+            // Check if user wants to continue shopping
+            if (shopping) {
+                System.out.print("\nWould you like to add another item? (yes/no): ");
+                scanner.nextLine();  // Clear the scanner buffer
+                String continueShopping = scanner.nextLine().toLowerCase();
+
+                if (continueShopping.equals("no")) {
+                    shopping = false;  // Exit shopping loop
+                    System.out.println("You're checking out now.");
+                }
+            }
+        }
+
+        // After exiting the loop, show the total cost
+        System.out.println("\nYour total is: $" + totalCost);
+
+        // Apply a discount if applicable
+        double discount = 0;
+        if (totalCost >= 100) {
+            discount = totalCost * 0.10;  // 10% discount if total is $100 or more
+            System.out.println("Congratulations! You've earned a 10% discount.");
+        } else {
+            System.out.println("You did not qualify for a discount.");
+        }
+
+        // Calculate the final total after discount
+        double finalTotal = totalCost - discount;
+        System.out.println("Your total after discount (if any) is: $" + finalTotal);
+
+        // Check if the user qualifies for free shipping
+        double shippingCost = 5;  // Default shipping cost
+        if (finalTotal >= 50) {
+            shippingCost = 0;  // Free shipping if total is $50 or more
+            System.out.println("You qualify for free shipping!");
+        } else {
+            System.out.println("Shipping cost: $" + shippingCost);
+        }
+
+        // Final total including shipping
+        finalTotal += shippingCost;
+        System.out.println("Your final total including shipping is: $" + finalTotal);
+
+        // Thank the user
+        System.out.println("\nThank you for shopping with us! Have a great day!");
+
+        // Close the scanner
+        scanner.close();
+    }
+}
