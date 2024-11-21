@@ -1,4 +1,4 @@
-package main.dayfive;
+package main.daysix;
 
 public class IfElse {
 
