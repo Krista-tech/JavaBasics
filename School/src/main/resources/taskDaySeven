@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class TreasureHunt {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int healthPoints = 100;
+        int treasures = 0;
+
+        System.out.println("Welcome to the Treasure Hunt Game!");
+        System.out.println("You have 100 HP and 0 treasures.");
+
+        do {
+            System.out.print("\nWhat would you like to do? (1 = Explore, 2 = Quit): ");
+            int choice = scanner.nextInt();
+
+            if (choice == 2) {
+                System.out.println("You quit the game. Final HP: " + healthPoints + ", Treasures: " + treasures + ". Thanks for playing!");
+                break;
+            }
+
+            int event = (int) (Math.random() * 3); // Random event: 0 = trap, 1 = treasure, 2 = potion
+            switch (event) {
+                case 0: // Trap
+                    int damage = (int) (Math.random() * 21) + 10; // Random damage between 10-30
+                    healthPoints -= damage;
+                    System.out.println("You explored and found a trap! You lost " + damage + " HP.");
+                    break;
+
+                case 1: // Treasure
+                    int foundTreasures = (int) (Math.random() * 41) + 10; // Random treasure between 10-50
+                    treasures += foundTreasures;
+                    System.out.println("You explored and found a treasure chest! You gained " + foundTreasures + " treasures.");
+                    break;
+
+                case 2: // Health Potion
+                    int potion = (int) (Math.random() * 11) + 10; // Random healing between 10-20
+                    healthPoints = Math.min(healthPoints + potion, 100); // Cap health at 100
+                    System.out.println("You explored and found a health potion! You gained " + potion + " HP.");
+                    break;
+            }
+
+            System.out.println("Current HP: " + healthPoints + ", Treasures: " + treasures);
+
+        } while (healthPoints > 0 && treasures < 200);
+
+        if (healthPoints <= 0) {
+            System.out.println("Game Over! You ran out of health.");
+        } else if (treasures >= 200) {
+            System.out.println("Congratulations! You collected 200 treasures and won the game!");
+        }
+
+        scanner.close();
+    }
+}
