@@ -1,0 +1,12 @@
+      while (totalStars < 10) {
+            System.out.print("How many stars did you collect? ");
+            int stars = scanner.nextInt();
+            totalStars += stars;
+
+            if (totalStars < 10) {
+                System.out.println("You now have " + totalStars + " stars.");
+            } else {
+                System.out.println("You now have " + totalStars + " stars.");
+                System.out.println("Congratulations! You collected 10 stars!");
+            }
+        }

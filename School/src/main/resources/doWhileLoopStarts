@@ -1,0 +1,17 @@
+      Scanner scanner = new Scanner(System.in);
+        int totalStars = 0;
+
+        System.out.println("You need 10 stars to win!");
+
+        do {
+            System.out.print("How many stars did you collect? ");
+            int stars = scanner.nextInt();
+            totalStars += stars;
+
+            if (totalStars < 10) {
+                System.out.println("You now have " + totalStars + " stars.");
+            }
+        } while (totalStars < 10);
+
+        System.out.println("Congratulations! You collected " + totalStars + " stars!");
+        scanner.close();
