@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class GuessFavoriteColor {
+    public static void main(String[] args) {
+        // Create an array of your favorite colors
+        String[] favoriteColors = {"Red", "Blue", "Green", "Purple", "Yellow"};
+
+        // Create a scanner object to get input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask the user to guess your favorite color
+        System.out.println("Guess my favorite color! I have many favorite colors, but pick one.");
+
+        // Get the player's guess
+        String guess = scanner.nextLine();
+
+        // Use a for-each loop to check if the guess is correct
+        boolean isCorrect = false;
+        for (String color : favoriteColors) {
+            if (color.equalsIgnoreCase(guess)) {
+                isCorrect = true;
+                break; // If we find a match, we stop checking the rest of the list
+            }
+        }
+
+        // Print the result
+        if (isCorrect) {
+            System.out.println("Yay! You guessed it! My favorite color is " + guess + "!");
+        } else {
+            System.out.println("Oops! That's not my favorite color. Try again!");
+        }
+
+        // Close the scanner to prevent resource leak
+        scanner.close();
+    }
+}
