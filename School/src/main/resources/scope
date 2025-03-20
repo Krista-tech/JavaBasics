@@ -1,0 +1,92 @@
+package main.march_2.resp;
+
+// 🏆 TASK 1: Create a GameCharacter class
+public class GameCharacter {
+
+    // 🏆 TASK 2: Create an instance variable `name` (Each character has a name)
+    private String name;
+
+    // 🏆 TASK 3: Create an instance variable `health` (Each character has health)
+    private int health;
+
+    // 🏆 TASK 4: Create a static variable `totalCharacters` (Counts how many characters exist)
+    public static int totalCharacters = 0;
+
+    // 🏆 TASK 5: Create a constructor that sets `name` and `health`, and increases `totalCharacters`
+    public GameCharacter(String name, int health) {
+        this.name = name;
+        this.health = health;
+        totalCharacters++; // Increments total characters created
+    }
+
+    // 🏆 TASK 6: Create an `attack()` method (No parameters)
+    public void attack() {
+        int damage = 10; // Method scope: Only exists inside this method
+        System.out.println(name + " attacks and deals " + damage + " damage!");
+    }
+
+    // 🏆 TASK 7: Overload `attack(String weapon)`
+    public void attack(String weapon) {
+        System.out.println(name + " attacks with " + weapon + " and deals 15 damage!");
+    }
+
+    // 🏆 TASK 8: Overload `attack(String weapon, int damage)`
+    public void attack(String weapon, int damage) {
+        System.out.println(name + " attacks with " + weapon + " dealing " + damage + " damage!");
+
+        // 🏆 Inside this method, add a block-scoped variable:
+        if (damage > 20) {
+            int criticalHit = 5; // Block scope: Only exists inside this `if`
+            System.out.println("Critical Hit! Extra " + criticalHit + " damage added!");
+        }
+        // System.out.println(criticalHit); ❌ ERROR: criticalHit only exists inside `if`
+    }
+
+    // 🏆 TASK 9: Create a `defend()` method (No parameters)
+    public void defend() {
+        System.out.println(name + " raises a shield and blocks 5 damage!");
+
+        // 🏆 Inside this method, add a block-scoped variable:
+        if (health < 30) {
+            int extraDefense = 5; // Block scope: Only exists inside `if`
+            System.out.println(name + " is weak! Gains an extra defense boost of " + extraDefense + "!");
+        }
+    }
+
+    // 🏆 TASK 10: Create a `displayCharacterInfo()` method (No parameters)
+    public void displayCharacterInfo() {
+        System.out.println("\nCharacter Name: " + name);
+        System.out.println("Health: " + health);
+    }
+}
+
+package main.march_2.resp;
+
+public class GameApp {
+    public static void main(String[] args) {
+
+        // 🏆 TASK 12: Create a GameCharacter object (Give it a name and health)
+        GameCharacter hero = new GameCharacter("Warrior", 100);
+        GameCharacter villain = new GameCharacter("Dark Mage", 25);
+
+        // 🏆 TASK 13: Call `displayCharacterInfo()` to print the character details
+        hero.displayCharacterInfo();
+        villain.displayCharacterInfo();
+
+        // 🏆 TASK 14: Call the `attack()` methods (test all overloaded versions)
+        hero.attack();
+        hero.attack("Sword");
+        hero.attack("Fireball", 30);
+
+        villain.attack();
+        villain.attack("Dark Magic");
+        villain.attack("Lightning Bolt", 18); // Should not trigger critical hit
+
+        // 🏆 TASK 15: Call `defend()` method and check if extra defense is added when health is low
+        hero.defend();
+        villain.defend(); // Villain has low health, should trigger extra defense
+
+        // 🏆 TASK 16: Print the total number of characters created using the static variable
+        System.out.println("\nTotal characters created: " + GameCharacter.totalCharacters);
+    }
+}
