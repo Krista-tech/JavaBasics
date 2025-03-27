@@ -1,0 +1,120 @@
+//package main.resources;
+//
+//import java.util.Scanner;
+//
+///**
+// * 🧗 StairTask
+// *
+// * A recursive stair-climbing challenge where a character climbs step by step,
+// * collects stars on even steps, rests every 3 steps, and prints or returns fun messages!
+// */
+//public class StairTask {
+//
+//    public static void main(String[] args) {
+//
+//        // TASK 1: Call the basic climb method
+//        climb("Emma", 1, 5);
+//
+//        System.out.println("\n---\n");
+//
+//        // TASK 2: Call the version that counts and prints total stars
+//        climb("Leo", 1, 6, 0);
+//
+//        System.out.println("\n---\n");
+//
+//        // TASK 3: Call the version that returns a message instead of printing
+//        String message = climbWithMessage("Nina", 1, 4);
+//        System.out.println(message);
+//
+//        System.out.println("\n---\n");
+//
+//        // TASK 4: Let the user enter their name and number of steps
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter your character's name: ");
+//        String name = scanner.nextLine();
+//
+//        System.out.print("Enter the number of steps: ");
+//        int topStep = scanner.nextInt();
+//
+//        climb(name, 1, topStep);
+//
+//        System.out.println("\n---\n");
+//
+//        // TASK 5: Call method that counts total steps recursively
+//        int totalSteps = countSteps(1, topStep);
+//        System.out.println("Total steps climbed: " + totalSteps);
+//    }
+//
+//    // ✅ Version 1: Basic stair climb
+//    public static void climb(String name, int current, int top) {
+//        if (current > top) {
+//            System.out.println("🎉 " + name + " reached the top after " + top + " steps!");
+//            return;
+//        }
+//
+//        String indent = "  ".repeat(current - 1);
+//
+//        if (current % 2 == 0) {
+//            System.out.println(indent + name + " is on step " + current + " 🌟");
+//        } else {
+//            System.out.println(indent + name + " is on step " + current);
+//        }
+//
+//        if (current % 3 == 0) {
+//            System.out.println(indent + name + " takes a short rest 😌");
+//        }
+//
+//        climb(name, current + 1, top);
+//    }
+//
+//    // ✅ Version 2: Overloaded climb method that tracks stars
+//    public static void climb(String name, int current, int top, int stars) {
+//        if (current > top) {
+//            System.out.println("🎉 " + name + " reached the top with " + stars + " stars! 🌟");
+//            return;
+//        }
+//
+//        String indent = "  ".repeat(current - 1);
+//
+//        if (current % 2 == 0) {
+//            System.out.println(indent + name + " is on step " + current + " 🌟");
+//            stars++;
+//        } else {
+//            System.out.println(indent + name + " is on step " + current);
+//        }
+//
+//        if (current % 3 == 0) {
+//            System.out.println(indent + name + " takes a short rest 😌");
+//        }
+//
+//        climb(name, current + 1, top, stars);
+//    }
+//
+//    // ✅ Version 3: Return full message as a String instead of printing
+//    public static String climbWithMessage(String name, int current, int top) {
+//        if (current > top) {
+//            return "🎉 " + name + " reached the top after " + top + " steps!";
+//        }
+//
+//        StringBuilder message = new StringBuilder();
+//        String indent = "  ".repeat(current - 1);
+//
+//        message.append(indent).append(name).append(" is on step ").append(current);
+//
+//        if (current % 2 == 0) {
+//            message.append(" 🌟");
+//        }
+//
+//        if (current % 3 == 0) {
+//            message.append("\n").append(indent).append(name).append(" takes a short rest 😌");
+//        }
+//
+//        return message + "\n" + climbWithMessage(name, current + 1, top);
+//    }
+//
+//    // ✅ BONUS: Count total steps recursively
+//    public static int countSteps(int current, int top) {
+//        if (current > top) return 0;
+//        return 1 + countSteps(current + 1, top);
+//    }
+//}
